@@ -1,0 +1,75 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #2b2d42;
+  color: #edf2f4;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #4a4e69;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  color: #edf2f4;
+}
+
+.navbar-actions button {
+  background-color: #9a8c98;
+  color: #edf2f4;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-actions button:hover {
+  background-color: #c9ada7;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 40px;
+  margin-right: 1rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.password-checker,
+.password-generator,
+.secret-text-management {
+  padding: 2rem;
+  text-align: center;
+}
+
+.password-checker input,
+.password-generator input,
+.secret-text-management input {
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+.status {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.status.strong {
+  color: green;
+}
+
+.status.weak {
+  color: red;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #4a4e69;
+  color: #edf2f4;
+}
