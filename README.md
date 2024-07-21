@@ -4,7 +4,7 @@
 <h3>
     Check the strength of your password and/or generate a strong password.
 </h3>
-<br></br>
+
 <h2>Bonus feature: </h2>
 <h3>
     Add/read/modify/delete a secret text (like API keys, passwords,etc.)
