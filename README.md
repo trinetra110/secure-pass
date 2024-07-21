@@ -1,4 +1,4 @@
-#Secure-Pass
+<h1>Secure-Pass</h1>
 A full-stack web application where you can:
 1. Check the strength of your password and/or generate a strong password.
 2. Add/read/modify/delete a secret text (like API keys, passwords,etc.) with a key. We use strong encryption to secure your secret text. (You need to sign up/sign in to use this feature)
