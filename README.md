@@ -1,5 +1,3 @@
-# secure-pass
-
 <h1>Secure-Pass</h1>
 <h3>
     Check the strength of your password and/or generate a strong password.
