@@ -1,75 +1,232 @@
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #2b2d42;
+  background-color: white;
   color: #edf2f4;
 }
-
+h1,
+h2,
+h3,
+p {
+  color: black;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Ensures all components are vertically aligned */
   padding: 1rem;
   background-color: #4a4e69;
+  border-radius: 5px;
 }
 
 .navbar-logo {
   font-size: 1.5rem;
   color: #edf2f4;
+  border-radius: 70%; /* Rounded corners for the logo */
+}
+
+.navbar-logo-pic {
+  border-radius: 20%;
 }
 
 .navbar-actions button {
-  background-color: #9a8c98;
+  background-color: #14adff;
   color: #edf2f4;
   border: none;
   padding: 0.5rem 1rem;
+  border-radius: 5px; /* Rounded corners for buttons */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s;
 }
 
 .navbar-actions button:hover {
-  background-color: #c9ada7;
+  background-color: #14adff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .profile-pic {
   border-radius: 50%;
-  width: 40px;
+  width: 50px;
   margin-right: 1rem;
+  margin-bottom: 0%;
 }
 
-.hero {
-  text-align: center;
-  padding: 2rem 0;
-}
-
+.hero,
 .password-checker,
 .password-generator,
-.secret-text-management {
+.secret-text-management,
+.footer {
+  margin: 1rem;
   padding: 2rem;
-  text-align: center;
+  border-radius: 5px; /* Rounded corners for section cards */
+  background-color: #6dbdf2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.password-checker input,
-.password-generator input,
-.secret-text-management input {
-  margin: 1rem 0;
-  padding: 0.5rem;
+/* Alternating colors for section cards */
+.password-checker {
+  background-color: #89e4ff;
 }
 
-.status {
-  margin-top: 1rem;
-  font-weight: bold;
+.password-generator {
+  background-color: #5986f5;
 }
 
-.status.strong {
-  color: green;
+.secret-text-management {
+  background-color: #6dbdf2;
 }
 
-.status.weak {
-  color: red;
+.footer {
+  background-color: #716df2;
+}
+
+input[type="text"],
+input[type="password"] {
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #0793f0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  color: black;
+}
+button {
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #6dbdf2;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: rgb(13, 0, 255);
+  color: white;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .footer {
   text-align: center;
   padding: 1rem;
-  background-color: #4a4e69;
+  background-color: #2239d4;
   color: #edf2f4;
+}
+
+.status-green {
+  font-size: 18px;
+  color: rgb(7, 223, 0);
+}
+
+.status-red {
+  font-size: 18px;
+  color: rgb(228, 5, 5);
+}
+
+/* Desktop specific styles */
+@media (min-width: 768px) {
+  .hero {
+    padding-left: 25%;
+    justify-content: center;
+    align-items: center;
+  }
+  .password-checker {
+    justify-content: center;
+    align-items: center;
+    padding-left: 40%;
+  }
+  .password-generator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .secret-text-management {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secret-text-management button {
+    margin: 0 10px;
+    margin-bottom: 1rem;
+  }
+
+  .add-secret,
+  .read-secret,
+  .modify-secret,
+  .delete-secret {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .add-secret input,
+  .read-secret input,
+  .modify-secret input,
+  .delete-secret input {
+    flex: 1;
+    margin: 0 10px;
+  }
+
+  .add-secret button,
+  .read-secret button,
+  .modify-secret button,
+  .delete-secret button {
+    margin-left: 10px;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile specific styles */
+@media (max-width: 767px) {
+  .body {
+    max-width: 750px;
+  }
+  .password-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .password-generator button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .secret-text-management {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secret-text-management button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .add-secret,
+  .read-secret,
+  .modify-secret,
+  .delete-secret {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .add-secret input,
+  .read-secret input,
+  .modify-secret input,
+  .delete-secret input {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .add-secret button,
+  .read-secret button,
+  .modify-secret button,
+  .delete-secret button {
+    width: 100%;
+    margin-top: 10px;
+  }
 }

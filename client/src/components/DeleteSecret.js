@@ -7,7 +7,7 @@ const DeleteSecret = () => {
 
   const handleDeleteSecret = async () => {
     await axios
-      .delete("http://localhost:5000/api/secrets/delete", { email: email, key: key })
+      .post("http://localhost:5000/api/secrets/delete", { email: email, key: key })
       .then((res) => {
         alert(res.data.message);
       })

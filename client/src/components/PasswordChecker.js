@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import axios from "axios";
 import owasp from "owasp-password-strength-test";
 
 const PasswordChecker = () => {
@@ -18,12 +17,6 @@ const PasswordChecker = () => {
     } catch (err) {
       console.log(err);
     }
-    /*await axios
-      .get("http://localhost:5000/api/check-password", { password: password })
-      .then((res) => {
-        setStatus(res.data.status);
-      })
-      .catch((err) => console.error("Error checking password:", err));*/
   };
 
   const handleChange = (event) => {
@@ -33,14 +26,16 @@ const PasswordChecker = () => {
 
   return (
     <section className="password-checker">
-      <h2>Enter your password:</h2>
+      <h1>Password Checker</h1>
+      <h3>Enter your password:</h3>
       <input type="text" value={password} onChange={handleChange} />
-      <div className="status">{status}</div>
+      {status === "Strong" ? <div className="status-green">STRONG</div> : <></>}
+      {status === "Weak" ? <div className="status-red">WEAK</div> : <></>}
       {errors.length !== 0 ? (
         <>
-          <div className="status">Note:</div>
+          <div className="status-red">NOTE:</div>
           {errors.map(function (error) {
-            return <div className="status">{error}</div>;
+            return <div className="status-red">{error}</div>;
           })}
         </>
       ) : null}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import axios from "axios";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
@@ -29,6 +28,7 @@ const PasswordGenerator = () => {
 
   return (
     <section className="password-generator">
+      <h1>Password Generator</h1>
       <button onClick={generatePassword}>GENERATE</button>
       <input type="text" value={password} readOnly />
       <button onClick={() => navigator.clipboard.writeText(password)}>

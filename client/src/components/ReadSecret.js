@@ -8,7 +8,10 @@ const ReadSecret = () => {
 
   const handleReadSecret = async () => {
     await axios
-      .get("http://localhost:5000/api/secrets/read", { email: email, key: key })
+      .post("http://localhost:5000/api/secrets/read", {
+        email: email,
+        key: key,
+      })
       .then((res) => {
         setSecret(res.data.secret);
         alert(res.data.message);
@@ -17,22 +20,31 @@ const ReadSecret = () => {
   };
 
   return (
-    <div className="read-secret">
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter your email"
-      />
-      <input
-        type="text"
-        value={key}
-        onChange={(e) => setKey(e.target.value)}
-        placeholder="Enter your key"
-      />
-      <button onClick={handleReadSecret}>READ</button>
-      {secret && <div className="secret">{secret}</div>}
-    </div>
+    <>
+      <div className="read-secret">
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
+        />
+        <input
+          type="text"
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
+          placeholder="Enter your key"
+        />
+        <button onClick={handleReadSecret}>READ</button>
+      </div>
+      {secret && (
+        <div className="read-secret">
+          <input type="text" value={secret} readOnly />
+          <button onClick={() => navigator.clipboard.writeText(secret)}>
+            COPY
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

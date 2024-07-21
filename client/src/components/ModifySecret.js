@@ -8,7 +8,7 @@ const ModifySecret = () => {
 
   const handleModifySecret = async () => {
     await axios
-      .put("http://localhost:5000/api/secrets/modify", { email: email, key: key, newSecret: newSecret })
+      .post("http://localhost:5000/api/secrets/modify", { email: email, key: key, secret: newSecret })
       .then((res) => {
         alert(res.data.message);
       })

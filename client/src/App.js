@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-//import Navbar from "./components/Navbar.js";
 import Hero from "./components/Hero.js";
 import PasswordChecker from "./components/PasswordChecker.js";
 import PasswordGenerator from "./components/PasswordGenerator.js";
-//import SecretTextManagement from "./components/SecretTextManagement.js";
 import AddSecret from "./components/AddSecret.js";
 import ReadSecret from "./components/ReadSecret.js";
 import ModifySecret from "./components/ModifySecret.js";
@@ -15,49 +13,28 @@ import {
   GoogleAuthProvider,
   signOut,
 } from "firebase/auth";
+import axios from "axios";
 import app from "./firebaseConfig.js";
-//import { gapi } from "gapi-script";
 
 const App = () => {
-  /*const [isSignedIn, setIsSignedIn] = useState(false);
-  const [profile, setProfile] = useState(null);
-
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: "",
-      });
-    }
-
-    gapi.load("client:auth2", start);
-  }, []);
-
-  const handleSignIn = () => {
-    const auth = gapi.auth2.getAuthInstance();
-    auth.signIn().then((user) => {
-      setProfile(user.getBasicProfile());
-      setIsSignedIn(true);
-    });
-  };
-
-  const handleSignOut = () => {
-    const auth = gapi.auth2.getAuthInstance();
-    auth.signOut().then(() => {
-      setProfile(null);
-      setIsSignedIn(false);
-    });
-  };*/
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   const [user, setUser] = useState([]);
   const [activeTab, setActiveTab] = useState("ADD");
   const handleLogin = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         /*const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;*/
         setUser(result.user);
+        await axios
+          .post("http://localhost:5000/api/auth", { email: result.user.email })
+          .then((res) => {
+            //alert(res.data);
+          })
+          .catch((err) =>
+            console.error("Error occurred while authenticating:", err)
+          );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -80,15 +57,10 @@ const App = () => {
 
   return (
     <>
-      {/* 
-      <Navbar
-      isSignedIn={isSignedIn}
-        profile={profile}
-        onSignIn={handleSignIn}
-        onSignOut={handleSignOut}
-      />*/}
       <nav className="navbar">
-        <div className="navbar-logo">Secure-Pass</div>
+        <div className="navbar-logo">
+          <img src="/favicon.ico" alt="Secure-Pass logo" className="navbar-logo-pic" />
+        </div>
         <div className="navbar-actions">
           {user.length !== 0 ? (
             <>
@@ -103,7 +75,6 @@ const App = () => {
       <Hero />
       <PasswordChecker />
       <PasswordGenerator />
-      {/*<SecretTextManagement isSignedIn={isSignedIn} />*/}
       {user.length === 0 ? (
         <>
           <section className="secret-text-management">
@@ -112,8 +83,8 @@ const App = () => {
         </>
       ) : (
         <section className="secret-text-management">
-          <h2>You can add/read/modify/delete your secret texts with a key.</h2>
-          <h3>NOTE: Remember your KEY always.</h3>
+          <h2>Secret Text Manager</h2>
+          <h3>NOTE: Remember your KEY always</h3>
           <div className="tabs">
             <button onClick={() => setActiveTab("ADD")}>ADD</button>
             <button onClick={() => setActiveTab("READ")}>READ</button>
